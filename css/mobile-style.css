@@ -1,0 +1,92 @@
+/*------------- Viewport less then or equal to 2500px -------*/
+@media only screen and (max-width: 2500px) {
+  .site-content .sidebar .newsletter .form-btn {
+    width: 83%;
+  }
+}
+
+/*------------- Viewport less then or equal to 1530px -------*/
+@media only screen and (max-width: 1530px) {
+  .site-content .sidebar .newsletter .form-btn {
+    width: 85%;
+  }
+}
+
+/*------------- Viewport less then or equal to 1130px -------*/
+@media only screen and (max-width: 1130px) {
+  .site-content .post-content > .post-image .post-info {
+    left: 2rem !important;
+    bottom: 1.2rem !important;
+    border-radius: 0% !important;
+  }
+
+  .site-content .sidebar .newsletter .form-btn {
+    width: 87%;
+  }
+
+  .site-content .sidebar .popular-post .post-info {
+    display: none !important;
+  }
+
+  footer.footer .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/*------------- Viewport less then or equal to 750px -------*/
+@media only screen and (max-width: 750px) {
+  .nav .nav-menu,
+  .nav .nav-items {
+    flex-direction: column;
+  }
+
+  .nav .toggle-collapse {
+    display: initial;
+  }
+
+  .site-content .sidebar .newsletter .form-btn {
+    width: 83%;
+  }
+
+  main .site-content {
+    grid-template-columns: 100%;
+  }
+
+  footer.footer .container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/*------------- Viewport less then or equal to 520px -------*/
+@media only screen and (max-width: 520px) {
+  main .blog {
+    height: 125vh;
+  }
+
+  .site-content .sidebar .newsletter .form-btn {
+    width: 85%;
+  }
+
+  .site-content .post-content > .post-image .post-info {
+    display: none;
+  }
+
+  footer.footer .container > div {
+    padding: 1rem 0.9rem !important;
+  }
+
+  footer .rights {
+    padding: 0 1.4rem;
+  }
+
+  nav .toggle-collapse {
+    width: 80% !important;
+  }
+}
+
+/*------------- Viewport less then or equal to 320px -------*/
+@media only screen and (max-width: 320px) {
+  .site-content .sidebar .newsletter .form-btn {
+    width: 88%;
+  }
+}

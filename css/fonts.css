@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "Abel", sans-serif;
+  src: url(/fonts/Abel/Abel-Regular.ttf);
+}
+
+@font-face {
+  font-family: "Anton", sans-serif;
+  src: url(/fonts/Anton/Anton-Regular.ttf);
+}
+
+@font-face {
+  font-family: "Josefin Sans", sans-serif;
+  src: url(/fonts/Josefin_Sans/JosefinSans-VariableFont_wght.ttf);
+}
+
+@font-face {
+  font-family: "Lexend", sans-serif;
+  src: url(/fonts/Lexend/Lexend-Regular.ttf);
+}
