@@ -35,14 +35,15 @@
 
 /*------------- Viewport less then or equal to 750px -------*/
 @media only screen and (max-width: 750px) {
-  .nav .nav-menu,
+  /* Nav styles moved to header.css - these rules are overridden */
+  /* .nav .nav-menu,
   .nav .nav-items {
     flex-direction: column;
   }
 
   .nav .toggle-collapse {
     display: initial;
-  }
+  } */
 
   .site-content .sidebar .newsletter .form-btn {
     width: 83%;
@@ -79,9 +80,10 @@
     padding: 0 1.4rem;
   }
 
-  nav .toggle-collapse {
+  /* Nav toggle styles moved to header.css */
+  /* nav .toggle-collapse {
     width: 80% !important;
-  }
+  } */
 }
 
 /*------------- Viewport less then or equal to 320px -------*/

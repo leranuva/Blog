@@ -1,0 +1,460 @@
+/**
+ * Modern Header Styles 2025
+ * Elegant, Professional & Responsive
+ * 
+ * IMPORTANT: This file should load AFTER style.css to ensure proper override
+ */
+
+/* ===== CSS Variables ===== */
+:root {
+    --header-height: 80px;
+    --header-bg: rgba(255, 255, 255, 0.95);
+    --header-bg-scrolled: rgba(255, 255, 255, 0.98);
+    --header-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    --header-shadow-scrolled: 0 4px 30px rgba(0, 0, 0, 0.12);
+    --text-primary: #1a1a1a;
+    --text-secondary: #666;
+    --accent-color: #007bff;
+    --accent-hover: #0056b3;
+    --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --border-radius: 12px;
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --header-bg: rgba(18, 18, 18, 0.95);
+        --header-bg-scrolled: rgba(18, 18, 18, 0.98);
+        --text-primary: #ffffff;
+        --text-secondary: #b0b0b0;
+        --header-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        --header-shadow-scrolled: 0 4px 30px rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* ===== Main Navigation Container ===== */
+/* Using !important to ensure these styles override legacy styles */
+.nav {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 1000 !important;
+    background: var(--header-bg) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    box-shadow: var(--header-shadow) !important;
+    transition: all var(--transition-smooth) !important;
+    height: var(--header-height) !important;
+    min-height: var(--header-height) !important;
+    display: flex !important;
+    align-items: center !important;
+    overflow: visible !important;
+    padding: 0 !important;
+}
+
+.nav.scrolled {
+    background: var(--header-bg-scrolled);
+    box-shadow: var(--header-shadow-scrolled);
+    height: calc(var(--header-height) - 10px);
+}
+
+/* ===== Navigation Menu ===== */
+.nav-menu {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+}
+
+/* ===== Brand/Logo ===== */
+.nav-brand {
+    flex-shrink: 0;
+    z-index: 1001;
+}
+
+.nav-brand a {
+    font-size: 1.75rem;
+    font-weight: 700;
+    font-family: var(--Lexend, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+    color: var(--text-primary);
+    text-decoration: none;
+    background: linear-gradient(135deg, var(--accent-color) 0%, #6c5ce7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transition: all var(--transition-fast);
+    display: inline-block;
+    position: relative;
+}
+
+.nav-brand a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(135deg, var(--accent-color) 0%, #6c5ce7 100%);
+    transition: width var(--transition-smooth);
+}
+
+.nav-brand a:hover::after {
+    width: 100%;
+}
+
+/* ===== Navigation Items ===== */
+.nav-items {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    flex: 1;
+    justify-content: center;
+}
+
+.nav-link {
+    position: relative;
+    padding: 0 var(--spacing-sm);
+}
+
+.nav-link a {
+    display: block;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    font-family: var(--Abel, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all var(--transition-fast);
+    position: relative;
+    border-radius: var(--border-radius);
+}
+
+.nav-link a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--accent-color);
+    transition: width var(--transition-smooth);
+}
+
+.nav-link a:hover,
+.nav-link a.active {
+    color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.nav-link a:hover::before,
+.nav-link a.active::before {
+    width: 80%;
+}
+
+/* ===== Social Icons ===== */
+.nav .social {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    flex-shrink: 0;
+}
+
+.nav .social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: var(--text-secondary);
+    background: rgba(0, 123, 255, 0.1);
+    transition: all var(--transition-fast);
+    text-decoration: none;
+}
+
+.nav .social a:hover {
+    background: var(--accent-color);
+    color: #ffffff;
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+}
+
+.nav .social a i {
+    font-size: 1rem;
+}
+
+/* ===== Mobile Toggle Button ===== */
+.toggle-collapse {
+    display: none;
+    position: absolute;
+    right: var(--spacing-lg);
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1002;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: rgba(0, 123, 255, 0.1);
+    transition: all var(--transition-fast);
+}
+
+.toggle-collapse:hover {
+    background: var(--accent-color);
+}
+
+.toggle-collapse.active {
+    background: var(--accent-color);
+}
+
+.toggle-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.toggle-icons i {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    transition: all var(--transition-fast);
+}
+
+.toggle-collapse.active .toggle-icons i {
+    color: #ffffff;
+    transform: rotate(90deg);
+}
+
+/* ===== Mobile Menu ===== */
+.nav.collapse {
+    height: auto;
+    min-height: var(--header-height);
+}
+
+.nav.collapse .nav-menu {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--spacing-lg);
+    gap: var(--spacing-md);
+}
+
+.nav.collapse .nav-items {
+    flex-direction: column;
+    width: 100%;
+    gap: var(--spacing-xs);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition-smooth);
+}
+
+.nav.collapse .nav-items.active {
+    max-height: 500px;
+    padding: var(--spacing-md) 0;
+}
+
+.nav.collapse .nav-link {
+    width: 100%;
+    padding: 0;
+}
+
+.nav.collapse .nav-link a {
+    padding: var(--spacing-sm);
+    border-radius: var(--border-radius);
+    width: 100%;
+    text-align: left;
+}
+
+.nav.collapse .nav-link a:hover {
+    background: rgba(0, 123, 255, 0.1);
+    transform: translateX(8px);
+}
+
+.nav.collapse .social {
+    width: 100%;
+    justify-content: center;
+    padding: var(--spacing-md) 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode mobile menu */
+@media (prefers-color-scheme: dark) {
+    .nav.collapse .social {
+        border-top-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* ===== Responsive Design ===== */
+
+/* Tablet */
+@media (max-width: 968px) {
+    .nav-menu {
+        padding: 0 var(--spacing-md);
+    }
+    
+    .nav-items {
+        gap: 0;
+    }
+    
+    .nav-link {
+        padding: 0 calc(var(--spacing-xs) / 2);
+    }
+    
+    .nav-link a {
+        font-size: 0.85rem;
+        padding: var(--spacing-xs) calc(var(--spacing-xs) / 2);
+    }
+    
+    .nav .social {
+        gap: calc(var(--spacing-xs) / 2);
+    }
+    
+    .nav .social a {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    :root {
+        --header-height: 70px;
+    }
+    
+    .nav-menu {
+        padding: 0 var(--spacing-md);
+    }
+    
+    .nav-brand a {
+        font-size: 1.5rem;
+    }
+    
+    .toggle-collapse {
+        display: flex;
+    }
+    
+    .nav-items {
+        display: none;
+    }
+    
+    .nav.collapse .nav-items {
+        display: flex;
+    }
+    
+    .nav .social {
+        display: none;
+    }
+    
+    .nav.collapse .social {
+        display: flex;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    :root {
+        --header-height: 65px;
+    }
+    
+    .nav-menu {
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .nav-brand a {
+        font-size: 1.35rem;
+    }
+    
+    .toggle-collapse {
+        width: 36px;
+        height: 36px;
+        right: var(--spacing-sm);
+    }
+    
+    .toggle-icons i {
+        font-size: 1.25rem;
+    }
+}
+
+/* ===== Scroll Indicator ===== */
+.nav::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-color) 0%, #6c5ce7 100%);
+    transition: width var(--transition-smooth);
+}
+
+.nav.scrolled::after {
+    width: 100%;
+}
+
+/* ===== Animation for Menu Items ===== */
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.nav.collapse .nav-items.active .nav-link {
+    animation: slideInDown 0.3s ease-out forwards;
+}
+
+.nav.collapse .nav-items.active .nav-link:nth-child(1) { animation-delay: 0.05s; }
+.nav.collapse .nav-items.active .nav-link:nth-child(2) { animation-delay: 0.1s; }
+.nav.collapse .nav-items.active .nav-link:nth-child(3) { animation-delay: 0.15s; }
+.nav.collapse .nav-items.active .nav-link:nth-child(4) { animation-delay: 0.2s; }
+.nav.collapse .nav-items.active .nav-link:nth-child(5) { animation-delay: 0.25s; }
+.nav.collapse .nav-items.active .nav-link:nth-child(6) { animation-delay: 0.3s; }
+.nav.collapse .nav-items.active .nav-link:nth-child(7) { animation-delay: 0.35s; }
+
+/* ===== Accessibility ===== */
+.nav-link a:focus,
+.toggle-collapse:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* ===== Smooth Scroll Behavior ===== */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--header-height) + 20px);
+}
+
+/* ===== Body Padding for Fixed Header ===== */
+/* Body doesn't need padding - header is fixed and content flows normally */
+body {
+    padding-top: 0;
+}
+
+/* Hero section should be visible from the start */
+main .site-title {
+    margin-top: 0;
+    position: relative;
+    z-index: 1;
+}
+

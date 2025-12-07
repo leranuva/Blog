@@ -1,0 +1,470 @@
+/**
+ * Travel Blog Hero Section 2025
+ * Clean, Inspiring & Elegant Design
+ * Perfect for travel and adventure content
+ */
+
+/* ===== CSS Variables ===== */
+:root {
+    --hero-overlay: rgba(0, 0, 0, 0.4);
+    --hero-text-color: #ffffff;
+    --hero-accent: #ff6b6b;
+    --hero-accent-hover: #ff5252;
+    --hero-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== Hero Container ===== */
+main .site-title.heroEffects {
+    height: 100vh;
+    min-height: 600px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ===== Background Image ===== */
+.heroEffects .bg {
+    height: 100vh;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-image: url(../assets/Background-image.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    transform: scale(1);
+    will-change: transform;
+    z-index: 1;
+    transition: transform 0.3s ease-out;
+}
+
+/* Subtle overlay for better text readability */
+.heroEffects .bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.2) 0%,
+        rgba(0, 0, 0, 0.5) 100%
+    );
+    z-index: 1;
+}
+
+/* ===== Shade Overlay (subtle on scroll) ===== */
+.heroEffects .shade {
+    opacity: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 2;
+    height: 100vh;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+/* ===== Content Container ===== */
+.heroEffects .title {
+    width: 100%;
+    position: relative;
+    z-index: 3;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2rem;
+}
+
+.heroEffects .title .text {
+    width: 100%;
+    max-width: 900px;
+    text-align: center;
+    color: var(--hero-text-color);
+    padding: 0;
+    background: transparent;
+    backdrop-filter: none;
+    border: none;
+    box-shadow: none;
+    position: relative;
+}
+
+/* Remove decorative elements for cleaner look */
+.heroEffects .title .text::before,
+.heroEffects .title .text::after {
+    display: none;
+}
+
+/* ===== Typography ===== */
+.heroEffects .text h3 {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    animation: fadeInDown 0.8s ease-out 0.2s both;
+    font-family: var(--Abel, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+}
+
+.heroEffects .text h1 {
+    font-size: clamp(2.5rem, 7vw, 5.5rem);
+    font-weight: 700;
+    margin: 0.8em 0;
+    color: var(--hero-text-color);
+    text-shadow: 
+        0 2px 10px rgba(0, 0, 0, 0.5),
+        0 4px 20px rgba(0, 0, 0, 0.3);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    animation: fadeInUp 1s ease-out 0.4s both;
+    font-family: var(--Lexend, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+}
+
+.heroEffects .text p {
+    width: 85%;
+    max-width: 700px;
+    margin: 2em auto;
+    line-height: 1.8;
+    padding: 0;
+    border: none;
+    letter-spacing: 0.02em;
+    color: rgba(255, 255, 255, 0.95);
+    font-size: clamp(1rem, 1.8vw, 1.25rem);
+    font-weight: 300;
+    animation: fadeInUp 1s ease-out 0.6s both;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    font-family: var(--Lexend, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+}
+
+/* ===== Buttons ===== */
+.hero-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+    animation: fadeInUp 1s ease-out 0.8s both;
+}
+
+.heroEffects .text .btn-primary {
+    padding: 1.1rem 2.8rem;
+    font-size: 1rem;
+    background: var(--hero-accent);
+    border: 2px solid var(--hero-accent);
+    border-radius: 50px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+
+.heroEffects .text .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.5s, height 0.5s;
+    z-index: 0;
+}
+
+.heroEffects .text .btn-primary:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.heroEffects .text .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(255, 107, 107, 0.6);
+    background: var(--hero-accent-hover);
+    border-color: var(--hero-accent-hover);
+}
+
+.heroEffects .text .btn-primary span,
+.heroEffects .text .btn-primary {
+    position: relative;
+    z-index: 1;
+}
+
+.heroEffects .text .btn-secondary {
+    padding: 1.1rem 2.8rem;
+    font-size: 1rem;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    border-radius: 50px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-block;
+    position: relative;
+    backdrop-filter: blur(10px);
+}
+
+.heroEffects .text .btn-secondary:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #ffffff;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Legacy button support */
+.heroEffects .text .btn:not(.btn-primary):not(.btn-secondary) {
+    padding: 1.1rem 2.8rem;
+    font-size: 1rem;
+    background: var(--hero-accent);
+    border: 2px solid var(--hero-accent);
+    border-radius: 50px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+
+.heroEffects .text .btn:not(.btn-primary):not(.btn-secondary):hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(255, 107, 107, 0.6);
+    background: var(--hero-accent-hover);
+}
+
+/* ===== Scroll Indicator Arrow ===== */
+.heroEffects .arrow {
+    position: absolute;
+    left: 50%;
+    margin-left: -20px;
+    bottom: 40px;
+    width: 40px;
+    height: 40px;
+    opacity: 1;
+    z-index: 4;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: fadeInUp 1s ease-out 1s both;
+}
+
+.heroEffects .arrow:hover {
+    opacity: 0.8;
+    transform: translateY(5px);
+}
+
+.heroEffects .arrow svg {
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+    transition: filter 0.3s ease;
+}
+
+.heroEffects .arrow:hover svg {
+    filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.4));
+}
+
+.bouncy {
+    animation: bounceArrow 2.5s infinite ease-in-out;
+}
+
+@keyframes bounceArrow {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* ===== Center Vertical ===== */
+.centerV {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    z-index: 3;
+}
+
+.centerV > div {
+    width: 100%;
+}
+
+/* ===== Remove Floating Elements (too distracting) ===== */
+.heroEffects .floating-elements {
+    display: none;
+}
+
+/* ===== Animations ===== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 968px) {
+    .heroEffects .text h1 {
+        font-size: clamp(2rem, 8vw, 4rem);
+    }
+    
+    .heroEffects .text h3 {
+        font-size: 0.9rem;
+        letter-spacing: 0.25em;
+    }
+    
+    .heroEffects .text p {
+        width: 90%;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .heroEffects .title {
+        padding: 0 1.5rem;
+    }
+    
+    .heroEffects .text h1 {
+        font-size: clamp(1.8rem, 10vw, 3.5rem);
+        margin: 0.6em 0;
+    }
+    
+    .heroEffects .text h3 {
+        font-size: 0.85rem;
+        letter-spacing: 0.2em;
+        margin-bottom: 1.2rem;
+    }
+    
+    .heroEffects .text p {
+        width: 95%;
+        font-size: 1rem;
+        margin: 1.5em auto;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 2.5rem;
+    }
+    
+    .heroEffects .text .btn-primary,
+    .heroEffects .text .btn-secondary {
+        width: 100%;
+        max-width: 300px;
+        padding: 1rem 2.5rem;
+    }
+    
+    .heroEffects .arrow {
+        bottom: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .heroEffects .title {
+        padding: 0 1rem;
+    }
+    
+    .heroEffects .text h1 {
+        font-size: clamp(1.5rem, 12vw, 2.5rem);
+    }
+    
+    .heroEffects .text h3 {
+        font-size: 0.75rem;
+        letter-spacing: 0.15em;
+    }
+    
+    .heroEffects .text p {
+        font-size: 0.95rem;
+        margin: 1.2em auto;
+    }
+    
+    .hero-buttons {
+        margin-top: 2rem;
+    }
+    
+    .heroEffects .text .btn-primary,
+    .heroEffects .text .btn-secondary {
+        max-width: 280px;
+        padding: 0.9rem 2rem;
+        font-size: 0.95rem;
+    }
+    
+    .heroEffects .arrow {
+        width: 35px;
+        height: 35px;
+        margin-left: -17.5px;
+        bottom: 25px;
+    }
+    
+    .heroEffects .arrow svg {
+        height: 20px;
+        width: 40px;
+    }
+}
+
+/* ===== Accessibility ===== */
+@media (prefers-reduced-motion: reduce) {
+    .heroEffects .bg,
+    .bouncy,
+    .heroEffects .text h1,
+    .heroEffects .text h3,
+    .heroEffects .text p,
+    .hero-buttons {
+        animation: fadeInUp 0.5s ease-out both;
+    }
+    
+    .heroEffects .text h1 {
+        animation-delay: 0.2s;
+    }
+    
+    .heroEffects .text p {
+        animation-delay: 0.3s;
+    }
+    
+    .hero-buttons {
+        animation-delay: 0.4s;
+    }
+}
+
+/* ===== Performance ===== */
+.heroEffects .bg {
+    will-change: transform;
+}

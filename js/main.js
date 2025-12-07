@@ -15,13 +15,19 @@ const responsive = {
 };
 
 $(document).ready(function () {
-  $nav = $(".nav");
-  $toggleCollapse = $(".toggle-collapse");
+  // Header functionality moved to header.js (modern implementation)
+  // Keeping this for backward compatibility, but header.js takes precedence
+  
+  // Only run if ModernHeader is not available
+  if (typeof ModernHeader === 'undefined') {
+    $nav = $(".nav");
+    $toggleCollapse = $(".toggle-collapse");
 
-  /*  Click envent on toogle menu */
-  $toggleCollapse.click(function () {
-    $nav.toggleClass("collapse");
-  });
+    /*  Click event on toggle menu */
+    $toggleCollapse.click(function () {
+      $nav.toggleClass("collapse");
+    });
+  }
 
   // Owl Carousel for blog
   $(".owl-carousel").owlCarousel({
