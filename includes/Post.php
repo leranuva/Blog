@@ -184,12 +184,15 @@ class Post {
      */
     public function getRecent($limit = 5) {
         $query = "SELECT p.*, 
-                  u.username as author_name,
-                  c.name as category_name, c.slug as category_slug
+                  u.username as author_name, u.full_name as author_full_name,
+                  c.name as category_name, c.slug as category_slug,
+                  COUNT(DISTINCT cm.id) as comment_count
                   FROM " . $this->table . " p
                   LEFT JOIN users u ON p.author_id = u.id
                   LEFT JOIN categories c ON p.category_id = c.id
+                  LEFT JOIN comments cm ON p.id = cm.post_id AND cm.status = 'approved'
                   WHERE p.status = 'published'
+                  GROUP BY p.id
                   ORDER BY p.published_at DESC
                   LIMIT :limit";
 
@@ -290,4 +293,5 @@ class Post {
         return $stmt->execute();
     }
 }
+
 

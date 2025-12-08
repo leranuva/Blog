@@ -93,7 +93,31 @@ function asset($path) {
         return BASE_URL . '/' . $path;
     }
     
-    // For CSS, JS, and other root-level files, use directly
+    // For CSS, JS files in root, use directly
+    if (strpos($path, 'css/') === 0 || strpos($path, 'js/') === 0) {
+        return BASE_URL . '/' . $path;
+    }
+    
+    // For images and other assets, add assets/ prefix
+    // Check if it's an image file extension
+    $isImage = preg_match('/\.(jpg|jpeg|png|gif|svg|webp|ico)$/i', $path);
+    
+    // Check if it's a known asset folder path
+    $assetFolders = ['Blog-post/', 'popular-post/', 'instagram/', 'Background-image', 'Abract'];
+    $isAssetFolder = false;
+    foreach ($assetFolders as $folder) {
+        if (strpos($path, $folder) === 0) {
+            $isAssetFolder = true;
+            break;
+        }
+    }
+    
+    // If it's an image or asset folder, add assets/ prefix
+    if ($isImage || $isAssetFolder) {
+        return BASE_URL . '/assets/' . $path;
+    }
+    
+    // Default: use directly (for backward compatibility)
     return BASE_URL . '/' . $path;
 }
 

@@ -75,3 +75,4 @@ php -S localhost:8000
 3. Publica tu primer post
 4. Personaliza el diseño editando `css/style.css`
 
+

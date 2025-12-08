@@ -64,12 +64,25 @@
 
     <!--AOS JS Library-->
     <script src="<?php echo asset('js/aos.js'); ?>"></script>
-
+    
     <!--Custom Javascript file-->
     <script src="<?php echo asset('js/main.js'); ?>"></script>
     
     <!--Modern JavaScript-->
     <script src="<?php echo asset('js/app.js'); ?>"></script>
+    
+    <!--3D Carousel JavaScript-->
+    <script src="<?php echo asset('js/carousel-3d.js'); ?>"></script>
+    
+    <!--Hero Slider JavaScript-->
+    <script src="<?php echo asset('js/hero-slider.js'); ?>"></script>
+    
+    <!--Swiper JS Library-->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <!--Posts Center Slider JavaScript-->
+    <script src="<?php echo asset('js/posts-center-slider.js'); ?>"></script>
 </body>
 </html>
+
 

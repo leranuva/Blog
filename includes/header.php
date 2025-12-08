@@ -36,6 +36,9 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     <!--AOS Library-->
     <link rel="stylesheet" href="<?php echo asset('css/aos.css'); ?>" />
     
+    <!--Swiper Library-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
     <!--Notifications-->
     <link rel="stylesheet" href="<?php echo asset('css/notifications.css'); ?>" />
     
@@ -50,6 +53,12 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     
     <!--Posts Styles - Modern professional design -->
     <link rel="stylesheet" href="<?php echo getBaseUrl(); ?>/css/posts.css?v=<?php echo time(); ?>" />
+    
+    <!--Posts Center Slider Styles - Center-mode slider for posts -->
+    <link rel="stylesheet" href="<?php echo getBaseUrl(); ?>/css/posts-center-slider.css?v=<?php echo time(); ?>" />
+    
+    <!--Sidebar Styles - Modern sidebar design -->
+    <link rel="stylesheet" href="<?php echo getBaseUrl(); ?>/css/sidebar.css?v=<?php echo time(); ?>" />
 </head>
 <body>
     <!-- --------------------------Navigation----------------------------- -->

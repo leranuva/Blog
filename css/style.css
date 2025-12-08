@@ -257,6 +257,9 @@ main .site-content .post-content > .post-image,
 }
 
 /* ------------------- Sidebar -----------------------*/
+/* NOTE: Sidebar styles moved to sidebar.css for modern design */
+/* Legacy styles kept for backward compatibility - will be overridden by sidebar.css */
+
 .site-content > .sidebar .category-list {
   font-family: var(--Abel);
 }

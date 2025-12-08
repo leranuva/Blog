@@ -1,0 +1,137 @@
+/**
+ * Center-Mode Productivity Slider for Posts
+ * Modern Blog System 2025
+ */
+
+(function() {
+    const track = document.getElementById("track");
+    if (!track) return;
+
+    const wrap = track.parentElement;
+    const cards = Array.from(track.children);
+    const prev = document.getElementById("prev");
+    const next = document.getElementById("next");
+    const dotsBox = document.getElementById("dots");
+
+    if (!prev || !next || !dotsBox) return;
+
+    const isMobile = () => matchMedia("(max-width:767px)").matches;
+
+    // Create dots
+    cards.forEach((_, i) => {
+        const dot = document.createElement("span");
+        dot.className = "dot";
+        dot.onclick = () => activate(i, true);
+        dotsBox.appendChild(dot);
+    });
+    const dots = Array.from(dotsBox.children);
+
+    let current = 0;
+
+    function center(i) {
+        const card = cards[i];
+        if (!card) return;
+        
+        const axis = isMobile() ? "top" : "left";
+        const size = isMobile() ? "clientHeight" : "clientWidth";
+        const start = isMobile() ? card.offsetTop : card.offsetLeft;
+        
+        wrap.scrollTo({
+            [axis]: start - (wrap[size] / 2 - card[size] / 2),
+            behavior: "smooth"
+        });
+    }
+
+    function toggleUI(i) {
+        cards.forEach((c, k) => {
+            if (k === i) {
+                c.setAttribute("active", "");
+            } else {
+                c.removeAttribute("active");
+            }
+        });
+        
+        dots.forEach((d, k) => {
+            if (k === i) {
+                d.classList.add("active");
+            } else {
+                d.classList.remove("active");
+            }
+        });
+        
+        if (prev) prev.disabled = i === 0;
+        if (next) next.disabled = i === cards.length - 1;
+    }
+
+    function activate(i, scroll) {
+        if (i === current || i < 0 || i >= cards.length) return;
+        current = i;
+        toggleUI(i);
+        if (scroll) center(i);
+    }
+
+    function go(step) {
+        activate(Math.min(Math.max(current + step, 0), cards.length - 1), true);
+    }
+
+    if (prev) prev.onclick = () => go(-1);
+    if (next) next.onclick = () => go(1);
+
+    addEventListener(
+        "keydown",
+        (e) => {
+            if (["ArrowRight", "ArrowDown"].includes(e.key)) go(1);
+            if (["ArrowLeft", "ArrowUp"].includes(e.key)) go(-1);
+        },
+        { passive: true }
+    );
+
+    cards.forEach((card, i) => {
+        card.addEventListener(
+            "mouseenter",
+            () => {
+                if (matchMedia("(hover:hover)").matches) {
+                    activate(i, true);
+                }
+            }
+        );
+        card.addEventListener("click", () => activate(i, true));
+    });
+
+    let sx = 0,
+        sy = 0;
+    track.addEventListener(
+        "touchstart",
+        (e) => {
+            sx = e.touches[0].clientX;
+            sy = e.touches[0].clientY;
+        },
+        { passive: true }
+    );
+
+    track.addEventListener(
+        "touchend",
+        (e) => {
+            const dx = e.changedTouches[0].clientX - sx;
+            const dy = e.changedTouches[0].clientY - sy;
+            if (isMobile() ? Math.abs(dy) > 60 : Math.abs(dx) > 60)
+                go((isMobile() ? dy : dx) > 0 ? -1 : 1);
+        },
+        { passive: true }
+    );
+
+    if (window.matchMedia("(max-width:767px)").matches) {
+        dotsBox.style.display = "none";
+    }
+
+    addEventListener("resize", () => {
+        if (current >= 0 && current < cards.length) {
+            center(current);
+        }
+    });
+
+    // Initialize
+    toggleUI(0);
+    center(0);
+})();
+

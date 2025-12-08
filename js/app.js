@@ -4,8 +4,59 @@
  * 2025
  */
 
+// Posts Grid Navigation
+function initPostsGridNavigation() {
+    const postsGridList = document.querySelector('.posts-grid-list');
+    const prevButton = document.querySelector('.posts-grid-buttons .prevx');
+    const nextButton = document.querySelector('.posts-grid-buttons .nextx');
+    
+    if (!postsGridList || !prevButton || !nextButton) return;
+    
+    // Previous button - move last item to first
+    prevButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        const firstItem = postsGridList.querySelector('li:first-child');
+        if (firstItem) {
+            postsGridList.insertBefore(postsGridList.querySelector('li:last-child'), firstItem);
+        }
+    });
+    
+    // Next button - move first item to last
+    nextButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        const lastItem = postsGridList.querySelector('li:last-child');
+        const firstItem = postsGridList.querySelector('li:first-child');
+        if (firstItem && lastItem) {
+            postsGridList.insertBefore(firstItem, lastItem.nextSibling);
+        }
+    });
+    
+    // Auto-play functionality (optional)
+    let autoplayInterval;
+    const startAutoplay = () => {
+        autoplayInterval = setInterval(() => {
+            nextButton.click();
+        }, 10000); // Change every 10 seconds
+    };
+    
+    const stopAutoplay = () => {
+        if (autoplayInterval) {
+            clearInterval(autoplayInterval);
+        }
+    };
+    
+    // Start autoplay
+    startAutoplay();
+    
+    // Pause on hover
+    postsGridList.addEventListener('mouseenter', stopAutoplay);
+    postsGridList.addEventListener('mouseleave', startAutoplay);
+}
+
 // Newsletter Form Handler
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize posts grid navigation
+    initPostsGridNavigation();
     // Newsletter forms
     const newsletterForms = document.querySelectorAll('#newsletter-form, #newsletter-form-sidebar');
     

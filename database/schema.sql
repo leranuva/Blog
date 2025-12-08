@@ -123,3 +123,4 @@ INSERT INTO tags (name, slug) VALUES
 ('Review', 'review'),
 ('News', 'news');
 
+
